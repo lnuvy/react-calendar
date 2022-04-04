@@ -7,6 +7,7 @@ const Calendar = () => {
   const current = useSelector((state) => state.date.current);
   console.log(current);
 
+  // 14, 18 등 숫자형으로 들어옴
   const firstWeek = current.clone().startOf("month").week();
   const lastWeek =
     current.clone().endOf("month").week() === 1

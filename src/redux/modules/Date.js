@@ -12,22 +12,17 @@ const initialState = {
   current: moment(),
 };
 
-// middleware
-
 // reducer
 export default handleActions(
   {
-    [SET_DATE]: (state, action) => {
+    [SET_DATE]: (state, action) =>
       produce(state, (draft) => {
         draft.current = action.payload.current;
-      });
-    },
+      }),
   },
   initialState
 );
 
-const actionsCreators = {
+export const actionsCreators = {
   setDate,
 };
-
-export { actionsCreators };

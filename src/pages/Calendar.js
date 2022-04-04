@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Grid } from "../elements";
 import moment from "moment";
+import { useSelector } from "react-redux";
 
 const Calendar = () => {
-  const [current, setCurrent] = useState(moment());
+  const current = useSelector((state) => state.date.current);
+  console.log(current);
 
   const firstWeek = current.clone().startOf("month").week();
   const lastWeek =
@@ -60,8 +62,8 @@ const Calendar = () => {
       <table>
         <thead>
           <tr>
-            {weekArr.map((el) => {
-              return <td>{el}</td>;
+            {weekArr.map((el, i) => {
+              return <td key={`${i}_${el}`}>{el}</td>;
             })}
           </tr>
         </thead>

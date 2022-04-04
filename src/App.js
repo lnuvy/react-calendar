@@ -12,7 +12,7 @@ function App() {
         <Header />
       </Grid>
       <Grid>
-        <Block />
+        <Block>13</Block>
         <Routes>
           <Route path="/" element={<Calendar />} />
           <Route path="/add" element={<Add />} />

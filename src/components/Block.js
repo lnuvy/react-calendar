@@ -1,15 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Grid, Text } from "../elements";
+import { DefaultBlock } from "./Styled";
 
-const Block = () => {
+const Block = (props) => {
   const dispatch = useDispatch();
-  const reduxTest = useSelector((state) => state.date);
-  console.log(reduxTest);
-  return (
-    <div>
-      <h1>Block</h1>
-    </div>
-  );
+  const reduxTest = useSelector((state) => state.date.current);
+
+  const { children } = props;
+
+  return <DefaultBlock>{children}</DefaultBlock>;
 };
 
 export default Block;

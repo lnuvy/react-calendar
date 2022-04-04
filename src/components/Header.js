@@ -7,7 +7,6 @@ import { actionsCreators as dateActions } from "../redux/modules/date";
 const Header = () => {
   const dispatch = useDispatch();
   const current = useSelector((state) => state.date.current);
-  console.log(current);
 
   const lastMonth = () => {
     dispatch(dateActions.setDate(current.clone().subtract(1, "month")));

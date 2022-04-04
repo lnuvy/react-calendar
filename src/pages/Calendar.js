@@ -1,77 +1,52 @@
 import React, { useState } from "react";
 import { Grid } from "../elements";
 import moment from "moment";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Block from "../components/Block";
+import styled from "styled-components";
+import useRenderDate from "../redux/useRenderDate";
 
-const Calendar = () => {
+const Calendar = (props) => {
+  const dispatch = useDispatch();
   const current = useSelector((state) => state.date.current);
   console.log(current);
 
-  // 14, 18 등 숫자형으로 들어옴
-  const firstWeek = current.clone().startOf("month").week();
-  const lastWeek =
-    current.clone().endOf("month").week() === 1
-      ? 53
-      : current.clone().endOf("month").week();
+  const today = moment();
+
+  const firstDay = current.clone().startOf("month");
+  const startDate = firstDay.clone().subtract(firstDay.day(), "day");
+
+  console.log("firstDay, startDay", firstDay, startDate);
 
   const weekArr = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
-  const calendarArr = () => {
-    let result = [];
-    let week = firstWeek;
-    for (week; week <= lastWeek; week++) {
-      result = result.concat(
-        <tr key={week}>
-          {Array(7)
-            .fill(0)
-            .map((data, index) => {
-              let days = current
-                .clone()
-                .startOf("year")
-                .week(week)
-                .startOf("week")
-                .add(index, "day");
-
-              if (moment().format("YYYYMMDD") === days.format("YYYYMMDD")) {
-                return (
-                  <td key={index} style={{ backgroundColor: "red" }}>
-                    <span>{days.format("D")}</span>
-                  </td>
-                );
-              } else if (days.format("MM") !== current.format("MM")) {
-                return (
-                  <td key={index} style={{ backgroundColor: "gray" }}>
-                    <span>{days.format("D")}</span>
-                  </td>
-                );
-              } else {
-                return (
-                  <td key={index}>
-                    <span>{days.format("D")}</span>
-                  </td>
-                );
-              }
-            })}
-        </tr>
-      );
-    }
-    return result;
-  };
+  const dates = useRenderDate(startDate, today, current);
 
   return (
     <Grid>
-      <table>
-        <thead>
-          <tr>
-            {weekArr.map((el, i) => {
-              return <td key={`${i}_${el}`}>{el}</td>;
-            })}
-          </tr>
-        </thead>
-        <tbody>{calendarArr()}</tbody>
-      </table>
+      <Grid isFlex padding="15px">
+        {weekArr.map((el, i) => {
+          return <Grid key={`${i}_${el}`}>{el}</Grid>;
+        })}
+      </Grid>
+      <CalendarDate>{dates}</CalendarDate>
     </Grid>
   );
 };
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, calc(100% / 7));
+  grid-template-rows: 30px;
+  height: 30px;
+`;
+
+const CalendarDate = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, calc(100% / 7));
+  grid-template-rows: 30px;
+  height: 30px;
+  grid-template-rows: repeat(6, calc((100vh - 90px) / 6));
+`;
 
 export default Calendar;

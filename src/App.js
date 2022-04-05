@@ -8,11 +8,10 @@ import { Add, Calendar } from "./pages";
 function App() {
   return (
     <>
-      <Grid padding="30px">
+      <Grid>
         <Header />
       </Grid>
       <Grid>
-        <Block>13</Block>
         <Routes>
           <Route path="/" element={<Calendar />} />
           <Route path="/add" element={<Add />} />

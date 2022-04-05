@@ -22,6 +22,7 @@ const Calendar = (props) => {
 
   const dates = useRenderDate(startDate, today, current);
 
+  console.log(dates);
   return (
     <Grid>
       <Grid isFlex padding="15px">
@@ -34,19 +35,12 @@ const Calendar = (props) => {
   );
 };
 
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(7, calc(100% / 7));
-  grid-template-rows: 30px;
-  height: 30px;
-`;
-
 const CalendarDate = styled.div`
   display: grid;
   grid-template-columns: repeat(7, calc(100% / 7));
   grid-template-rows: 30px;
   height: 30px;
-  grid-template-rows: repeat(6, calc((100vh - 90px) / 6));
+  grid-template-rows: repeat(6, calc((100vh - 104px) / 6));
 `;
 
 export default Calendar;

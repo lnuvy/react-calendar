@@ -11,12 +11,10 @@ function App() {
       <Grid>
         <Header />
       </Grid>
-      <Grid>
-        <Routes>
-          <Route path="/" element={<Calendar />} />
-          <Route path="/add" element={<Add />} />
-        </Routes>
-      </Grid>
+      <Routes>
+        <Route path="/" element={<Calendar />} />
+        <Route path="/add" element={<Add />} />
+      </Routes>
     </>
   );
 }

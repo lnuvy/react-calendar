@@ -3,7 +3,7 @@ import React from "react";
 const View = () => {
   return (
     <div>
-      <h1>View</h1>
+      <h1>화면</h1>
     </div>
   );
 };

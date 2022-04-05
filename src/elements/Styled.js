@@ -9,7 +9,7 @@ const DefaultButton = styled.button`
 const DefaultGrid = styled.div`
   ${(props) =>
     props.isFlex
-      ? `display: flex; align-items: center; justify-content: space-between;`
+      ? `display: flex; align-items: center; justify-content: center;`
       : null}
 
   ${(props) => (props.height ? `height: ${props.height};` : "100%")}

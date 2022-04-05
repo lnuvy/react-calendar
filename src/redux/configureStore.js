@@ -1,8 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import Date from "./modules/date";
+import Todo from "./modules/todo";
+import Modal from "./modules/modal";
 
-const rootReducer = combineReducers({ date: Date });
+const rootReducer = combineReducers({ date: Date, todo: Todo, modal: Modal });
 
 const middlewares = [thunk];
 

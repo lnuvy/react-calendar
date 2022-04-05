@@ -16,31 +16,48 @@ const Calendar = (props) => {
   const firstDay = current.clone().startOf("month");
   const startDate = firstDay.clone().subtract(firstDay.day(), "day");
 
-  console.log("firstDay, startDay", firstDay, startDate);
-
   const weekArr = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
   const dates = useRenderDate(startDate, today, current);
 
-  console.log(dates);
   return (
-    <Grid>
-      <Grid isFlex padding="15px">
+    <Container>
+      <CalendarWeek>
         {weekArr.map((el, i) => {
-          return <Grid key={`${i}_${el}`}>{el}</Grid>;
+          return <WeekBox key={i}>{el}</WeekBox>;
         })}
-      </Grid>
+      </CalendarWeek>
       <CalendarDate>{dates}</CalendarDate>
-    </Grid>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  border-left: 1px solid black;
+`;
+
+const CalendarWeek = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, calc(100% / 7));
+  height: 30px;
+  border-top: 1px solid black;
+`;
+
+const WeekBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+`;
 
 const CalendarDate = styled.div`
   display: grid;
   grid-template-columns: repeat(7, calc(100% / 7));
-  grid-template-rows: 30px;
+  grid-template-rows: 50px;
   height: 30px;
-  grid-template-rows: repeat(6, calc((100vh - 104px) / 6));
+  grid-template-rows: repeat(6, calc((100vh - 150px) / 6));
 `;
 
 export default Calendar;

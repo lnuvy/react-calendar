@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <>
-      <Grid isFlex>
+      <Grid isFlex height="120px">
         <Button _onClick={lastMonth}>이전</Button>
         <Text bold>{current.format("YYYY년 MM월")}</Text>
         <Button _onClick={nextMonth}>다음</Button>

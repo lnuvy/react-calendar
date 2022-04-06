@@ -2,12 +2,14 @@ import { getValue } from "@testing-library/user-event/dist/utils";
 import moment from "moment";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Button, Grid, Input } from "../elements";
 import { actionCreators as todoActions } from "../redux/modules/todo";
 
 const InputForm = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [inputs, setInputs] = useState({
     color: "tomato",
@@ -36,6 +38,7 @@ const InputForm = (props) => {
       isDone: false,
     };
     dispatch(todoActions.addTodoFB(todo));
+    navigate("/");
   };
 
   return (

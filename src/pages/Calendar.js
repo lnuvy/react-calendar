@@ -9,7 +9,7 @@ import useRenderDate from "../redux/useRenderDate";
 const Calendar = (props) => {
   const dispatch = useDispatch();
   const current = useSelector((state) => state.date.current);
-  console.log(current);
+  const todoList = useSelector((state) => state.todo.list);
 
   const today = moment();
 

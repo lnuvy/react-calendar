@@ -7,11 +7,12 @@ import { Add, Calendar } from "./pages";
 
 import "./App.css";
 import { useDispatch } from "react-redux";
+import { actionCreators as todoActions } from "./redux/modules/todo";
 
 function App() {
   const dispatch = useDispatch();
 
-  // dispatch()
+  dispatch(todoActions.loadTodoFB());
 
   return (
     <>

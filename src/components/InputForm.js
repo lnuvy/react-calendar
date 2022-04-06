@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Button, Grid, Input } from "../elements";
+import ColorBtns from "../elements/ColorBtns";
 import { actionCreators as todoActions } from "../redux/modules/todo";
 
 const InputForm = (props) => {
@@ -12,7 +13,7 @@ const InputForm = (props) => {
   const navigate = useNavigate();
 
   const [inputs, setInputs] = useState({
-    color: "tomato",
+    color: "violet",
     title: "",
     date: moment().format("YYYY-MM-DD"),
     location: "",
@@ -41,8 +42,16 @@ const InputForm = (props) => {
     navigate("/");
   };
 
+  console.log(inputs);
+
   return (
     <Container>
+      <ColorBtns
+        current={inputs.color}
+        _onClick={(e) => {
+          setInputs({ ...inputs, color: e.target.id });
+        }}
+      />
       <Grid>
         <Input
           id="title"
@@ -61,6 +70,7 @@ const InputForm = (props) => {
           label="날짜*"
           _onChange={handleChange}
           value={inputs.date}
+          type="date"
         />
         <Input
           id="memo"

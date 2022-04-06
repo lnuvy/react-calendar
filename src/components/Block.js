@@ -17,6 +17,8 @@ const Block = (props) => {
     list = null,
   } = props;
 
+  console.log(list);
+
   return (
     <DefaultBlock
       left={left}
@@ -28,11 +30,12 @@ const Block = (props) => {
         {children}
       </Grid>
       {list.map((todo) => {
+        console.log("todo 맵", todo.color);
         return (
           <Todo
             key={todo.id}
             isCompleted={todo.isDone}
-            color={todo.color}
+            bg={todo.color}
             _onClick={() => {
               console.log("모달 열어야함");
               // showModal(todo.id)

@@ -33,30 +33,32 @@ const Calendar = (props) => {
 };
 
 const Container = styled.div`
-  border-left: 1px solid black;
+  border-left: 3px solid black;
+  height: calc(100vh - 120px);
 `;
 
 const CalendarWeek = styled.div`
   display: grid;
   grid-template-columns: repeat(7, calc(100% / 7));
   height: 30px;
-  border-top: 1px solid black;
+  border-top: 3px solid black;
+  border-left: 3px solid black;
 `;
 
 const WeekBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  /* height: 30px; */
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
 `;
 
 const CalendarDate = styled.div`
   display: grid;
   grid-template-columns: repeat(7, calc(100% / 7));
   grid-template-rows: 50px;
-  height: 30px;
+  /* height: 30px; */
   grid-template-rows: repeat(6, calc((100vh - 150px) / 6));
 `;
 

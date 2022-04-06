@@ -7,10 +7,21 @@ const Block = (props) => {
   const dispatch = useDispatch();
   const reduxTest = useSelector((state) => state.date.current);
 
-  const { children, today, thisMonth, _onClick = () => {} } = props;
+  const {
+    children,
+    today,
+    thisMonth,
+    _onClick = () => {},
+    left = false,
+  } = props;
 
   return (
-    <DefaultBlock today={today} thisMonth={thisMonth} onClick={_onClick}>
+    <DefaultBlock
+      left={left}
+      today={today}
+      thisMonth={thisMonth}
+      onClick={_onClick}
+    >
       <Grid padding="10px" margin="5px 10px">
         {children}
       </Grid>

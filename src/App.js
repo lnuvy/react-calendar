@@ -5,16 +5,18 @@ import Block from "./components/Block";
 import { Grid } from "./elements";
 import { Add, Calendar } from "./pages";
 
+import "./App.css";
+
 function App() {
   return (
     <>
       <Grid>
         <Header />
+        <Routes>
+          <Route path="/" element={<Calendar />} />
+          <Route path="/add" element={<Add />} />
+        </Routes>
       </Grid>
-      <Routes>
-        <Route path="/" element={<Calendar />} />
-        <Route path="/add" element={<Add />} />
-      </Routes>
     </>
   );
 }

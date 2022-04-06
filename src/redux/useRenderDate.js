@@ -16,18 +16,11 @@ const useRenderDate = (start, now, current) => {
             target.clone().format("YYYYMM") ===
             current.clone().format("YYYYMM"); // 해당 날짜가 이번달인지 확인 (이번달이 아니면 날짜가 흐리게 보이도록 함)
 
-          if (idx % 7 === 0) {
-            return (
-              <Block left key={idx} today={today} thisMonth={thisMonth}>
-                {target.format("D")}
-              </Block>
-            );
-          } else
-            return (
-              <Block key={idx} today={today} thisMonth={thisMonth}>
-                {target.format("D")}
-              </Block>
-            );
+          return (
+            <Block key={idx} today={today} thisMonth={thisMonth}>
+              {target.format("D")}
+            </Block>
+          );
         })
       }
     </>

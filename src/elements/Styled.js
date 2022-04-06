@@ -20,8 +20,6 @@ const DefaultGrid = styled.div`
   ${(props) => (props.center ? `text-align: center;` : null)}
 `;
 
-const DefaultInput = styled.input``;
-
 const DefaultText = styled.p`
   color: ${(props) => props.color};
   font-size: ${(props) => props.size};
@@ -30,4 +28,4 @@ const DefaultText = styled.p`
   ${(props) => (props.margin ? `margin:${props.margin};` : "")}
 `;
 
-export { DefaultButton, DefaultGrid, DefaultInput, DefaultText };
+export { DefaultButton, DefaultGrid, DefaultText };
